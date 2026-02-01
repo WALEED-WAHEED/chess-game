@@ -4,6 +4,7 @@ from tkinter import messagebox
 import os
 from chessEngine import GameState, Move
 
+CLIENT_NAME = "Foot Master"
 Width = Height = 1080
 Dimension = 8
 SQ_SIZE = Height // Dimension
@@ -37,6 +38,7 @@ def main():
     SQ_SIZE = Height // Dimension
     PIECE_SIZE = max(60, int(SQ_SIZE * (100/135)))
     screen = p.display.set_mode((Width, Height))
+    p.display.set_caption(CLIENT_NAME)
     clock = p.time.Clock()
     screen.fill(p.Color("white"))
     font = p.font.SysFont(None, 42)
@@ -314,7 +316,7 @@ def login_window():
         pass
     result = {"user": None}
     root = tk.Tk()
-    root.title("Login")
+    root.title(f"{CLIENT_NAME} - Login")
     tk.Label(root, text="Username").grid(row=0, column=0)
     tk.Label(root, text="Password").grid(row=1, column=0)
     u = tk.Entry(root)
@@ -348,7 +350,7 @@ def login_window():
 def settings_window():
     result = {"done": False, "base": 180, "inc": 0, "side": 'white'}
     root = tk.Tk()
-    root.title("Game Settings")
+    root.title(f"{CLIENT_NAME} - Game Settings")
     tk.Label(root, text="Choose Side").pack(anchor='w')
     side_var = tk.StringVar(value='white')
     tk.Radiobutton(root, text='White', variable=side_var, value='white').pack(anchor='w')
